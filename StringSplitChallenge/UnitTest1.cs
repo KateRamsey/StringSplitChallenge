@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StringSplitChallenge
@@ -10,27 +11,16 @@ namespace StringSplitChallenge
         public string LastName(string fullname)
         {
             var nameList = fullname.Split(' ');
-            var last = nameList.Length - 1;
-            return nameList[last];  
+            return nameList[nameList.Length - 1];  
         }
 
 
         public string FirstName(string fullname)
         {
-            var nameList = fullname.Split(' ');
-            if (nameList.Length <= 2)
-            {
-                return nameList[0];
-            }
-            else
-            {
-                var complexFirstName = nameList[0];
-                for (var i = 1; i < nameList.Length - 1; i++)
-                {
-                    complexFirstName += $" {nameList[i]}";
-                }
-                return complexFirstName;
-            }
+            var nameList = fullname.Split(' ').ToList();
+            var numOfFirstNames = Math.Max(nameList.Count - 1, 1);
+
+            return string.Join(" ", nameList.GetRange(0, numOfFirstNames));
         }
 
 
