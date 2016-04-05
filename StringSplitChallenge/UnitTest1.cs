@@ -60,6 +60,13 @@ namespace StringSplitChallenge
             Assert.AreEqual("", FirstName(""));
             Assert.AreEqual("", LastName(""));
         }
+
+        [TestMethod]
+        public void TestFourWordName()
+        {
+            Assert.AreEqual("Kathryn Alissa Ramsey", FirstName("Kathryn Alissa Ramsey Wills"));
+            Assert.AreEqual("Wills", LastName("Kathryn Alissa Ramsey Wills"));
+        }
     }
 
 
